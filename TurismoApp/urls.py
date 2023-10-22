@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import inicio,paquetes,tailandia, natal,formulario
+from .views import inicio,paquetes,formulario, agendarTailandia,agendarNatal
 
 
 
 urlpatterns = [
     path('inicio/', inicio, name="Inicio"),
     path ('paq/', paquetes, name="Paquetes"),
-    path('tai/', tailandia, name="Tailandia"),
-    path('nat/', natal, name="Natal"),
-    path('form/', formulario, name="Formulario")
+    path('form/', formulario, name="Formulario"),
+    path('tai/', agendarTailandia, name="Tailandia"),
+    path('nat/', agendarNatal, name="Natal")
     ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from TurismoApp.forms import formulario_f, UserRegisterForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login,authenticate
+from TurismoApp.forms import formulario_f, formulario_t,formulario_N
+
+
 
 # Create your views here.
 def inicio(request):
@@ -10,12 +10,46 @@ def inicio(request):
 def paquetes(request):
     return render (request,"TurismoApp/paquetes.html")
 
-def tailandia(request):
-    return render (request, "TurismoApp/tailandia.html")
 
-def natal(request):
-    return render (request, "TurismoApp/natal.html")
+def agendarTailandia(request):
+      if request.method == 'POST':
 
+            miTai = formulario_N (request.POST) 
+            print(miTai)
+
+            if miTai.is_valid():
+                  informacion = miTai.cleaned_data
+
+            tailandia =  tailandia(request.post['nombre']),(request.post['apellido']),(request.post['nombre'],(request.post['apellido']))
+            tailandia.save()
+ 
+            return render(request, "TurismoApp/tailandia.html")
+      else:
+            miTai = formulario_N()
+ 
+      return render(request, "TurismoApp/tailandia.html", {"miTai": miTai})
+ 
+
+def agendarNatal (request):
+ 
+      if request.method == "POST":
+ 
+            miNat = formulario_N (request.POST) 
+            print(miNat)
+ 
+            if miNat.is_valid():
+                  informacion = miNat.cleaned_data
+               
+                  natal = natal(nombre=informacion["nombre"], apellido=informacion["apellido"],email=informacion["email"], fechaDeSalida=informacion["fechaDeSalida"])
+                  natal.save()
+                  return render(request, "TurismoApp/natal.html")
+      else:
+            miNat = formulario_N()
+ 
+      return render(request, "TurismoApp/natal.html", {"miNat": miNat})
+
+
+     
 
 def formulario (request):
  
@@ -36,48 +70,7 @@ def formulario (request):
       return render(request, "TurismoApp/formulario.html", {"miFormulario": miFormulario})
 
 
-def login_request (request):
 
 
-      if request.method == "POST":
-            form = AuthenticationForm(request, data = request.POST)
-
-            if form.is_valid():
-                  usuario = form.cleaned_data.get('username')
-                  contra = form.cleaned_data.get('password')
-
-                  user = authenticate(username=usuario, password=contra)
-
-            
-                  if user is not None:
-                        login(request, user)
-                       
-                        return render(request,"TurismoApp/index.html",  {"mensaje":f"Bienvenido {usuario}"} )
-                  else:
-                        
-                        return render(request,"TurismoApp/index.html", {"mensaje":"Error, datos incorrectos"} )
-
-            else:
-                        
-                        return render(request,"TurismoApp/index.html" ,  {"mensaje":"Error, formulario erroneo"})
-
-      form = AuthenticationForm()
-
-      return render(request,"TurismoApp/login.html", {'form':form} )
 
 
-def register (request):
-
-      if request.method == 'POST':
-
-            form = UserRegisterForm(request.POST)
-            if form.is_valid():
-                username = form.cleaned_data['username']
-                form.save()
-                return render(request,"TurismoApp/index.html" ,  {"mensaje":f"{username} Usuario Creado :)"})
-
-
-      else:
-            form = UserRegisterForm()          
-
-      return render(request,"TurismoApp/register.html" ,  {"form":form})

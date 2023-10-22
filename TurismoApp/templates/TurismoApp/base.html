@@ -5,6 +5,8 @@
 
 {% block main %}
 <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <title>TRAVELER - Free Travel Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -43,16 +45,16 @@
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-primary px-3" href="">
+                        <a class="text-primary px-3" href="https://www.facebook.com/gabriela.decarlos?mibextid=ZbWKwL">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a class="text-primary px-3" href="">
+                        <a class="text-primary px-3" href=" https://twitter.com/Gabytadc_?t=MjZ_13jsi70NA7pYQKMykg&s=08">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a class="text-primary px-3" href="">
+                        <a class="text-primary px-3" href="https://www.linkedin.com/in/gabriela-de-carlos-19783b222">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a class="text-primary px-3" href="">
+                        <a class="text-primary px-3" href="https://instagram.com/gabydc19?igshid=YTQwZjQ0NmI0OA==">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a class="text-primary pl-3" href="">
@@ -80,9 +82,11 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="./base.html" class="nav-item nav-link active">Inicio</a>
                         <a href="#!"class="nav-item nav-link">About</a>
-                        <a href="{% url 'Paquetes' %}" class="nav-item nav-link">Paquetes</a>
-                        <a href="{% url 'Tailandia' %}" class="nav-item nav-link">Tailandia</a>
-                        <a href="{% url 'Natal' %}" class="nav-item nav-link">Natal</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Paquetes</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="{% url 'Tailandia' %}" class="dropdown-item">Tailandia</a>
+                            <a href="{% url 'Natal' %}" class="dropdown-item">Natal</a>
+                        </div>
                     
                         {% if request.user.is_authenticated %}
                             {% if user_avatar %}
@@ -114,14 +118,14 @@
                 </div>
             </div>
         </nav>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="single.html" class="dropdown-item">Blog Detail</a>
-                                <a href="destination.html" class="dropdown-item">Destination</a>
-                                <a href="guide.html" class="dropdown-item">Travel Guides</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                             <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                             <a href="single.html" class="dropdown-item">Blog Detail</a>
+                             <a href="destination.html" class="dropdown-item">Destination</a>
+                            <a href="guide.html" class="dropdown-item">Travel Guides</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -145,7 +149,7 @@
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
