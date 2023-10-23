@@ -6,6 +6,6 @@ urlpatterns = [
     path('form/', formulario, name="Formulario"),
     path('login/',login_request, name="Login"),
     path('reg/',register, name="Register"),
-    path('logo/', LogoutView.as_view(template_name='TurismoApp/logout.html'), name='Logout'),
-    path('edit/', editarPerfil, name="EditarPerfil"),
+    path('logo/', LogoutView.as_view(template_name='UserApp/logout.html'), name='Logout'),
+    path('edit/', editarPerfil, name="Editar"),
 ]

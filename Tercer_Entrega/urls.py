@@ -25,4 +25,5 @@ urlpatterns = [
     path('app/', include('TurismoApp.urls')),
     path('users/', include ('UserApp.urls')),
 ]
+
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

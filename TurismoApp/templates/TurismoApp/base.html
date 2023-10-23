@@ -80,8 +80,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="./base.html" class="nav-item nav-link active">Inicio</a>
-                        <a href="#!"class="nav-item nav-link">About</a>
+                        <a href="{% url 'Inicio' %}" class="nav-item nav-link active">Inicio</a>
+                        <a href="{% url 'About' %}"class="nav-item nav-link">About</a>
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Paquetes</a>
                         <div class="dropdown-menu border-0 rounded-0 m-0">
                             <a href="{% url 'Tailandia' %}" class="dropdown-item">Tailandia</a>
@@ -96,39 +96,35 @@
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ request.user.username }}
                                 </button>
+                                <div class="dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta</a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="{% url 'Edit' %}">Editar cuenta</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Editar' %}">Editar cuenta</a></li>
                                     <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar sesión</a></li>
                                 </ul>
                             </div>
-
                         {% else %}
-
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Cuenta
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'Register' %}">Crear cuenta</a></li>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                 <li><a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Register' %}">Crear cuenta</a></li>
+                                
                                 </ul>
                             </div>
                         {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                   
+                        <div class="nav-item dropdown">
+                            <a href="{% url 'Blog' %}" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                             <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                             <a href="single.html" class="dropdown-item">Blog Detail</a>
-                             <a href="destination.html" class="dropdown-item">Destination</a>
-                            <a href="guide.html" class="dropdown-item">Travel Guides</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                             <a href="{% url 'Blog' %}" class="dropdown-item">Blog Grid</a>
+                             <a href="{% url 'BlogDetail' %}" class="dropdown-item">Blog Detail</a>
+                             {#  <a href="destination.html" class="dropdown-item">Destination</a >#}
+                             {# <a href="guide.html" class="dropdown-item">Travel Guides</a>#}
+                             {#  <a href="testimonial.html" class="dropdown-item">Testimonial</a> #}
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="{% url 'Contacto' %}"class="nav-item nav-link">Contacto</a>
                     </div>
                 </div>
             </nav>
@@ -179,7 +175,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact</h5>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>1141719540</p>
                 <p><i class="fa fa-envelope mr-2"></i>gabydecarlos19@gmail.com</p>

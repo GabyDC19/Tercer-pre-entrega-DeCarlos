@@ -10,7 +10,6 @@ class paquetes(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
     fechaDeSalida = models.DateField()
-    entregado = models.BooleanField()
     cantidad = models.IntegerField()
 
 class tailandia(models.Model):

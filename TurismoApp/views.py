@@ -7,6 +7,19 @@ from TurismoApp.forms import formulario_f, formulario_t,formulario_N
 def inicio(request):
     return render (request, "TurismoApp/index.html")
 
+def about(request):
+    return render (request, "TurismoApp/about.html")
+
+def contacto(request):
+    return render (request, "TurismoApp/contacto.html")
+
+def blog (request):
+    return render (request, "TurismoApp/blog.html")
+
+def blogD (request):
+    return render (request, "TurismoApp/blogDetalle.html")
+
+
 def paquetes(request):
     return render (request,"TurismoApp/paquetes.html")
 
@@ -14,7 +27,7 @@ def paquetes(request):
 def agendarTailandia(request):
       if request.method == 'POST':
 
-            miTai = formulario_N (request.POST) 
+            miTai = formulario_t (request.POST) 
             print(miTai)
 
             if miTai.is_valid():

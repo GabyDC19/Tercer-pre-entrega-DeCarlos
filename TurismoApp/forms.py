@@ -16,3 +16,8 @@ class formulario_N (forms.Form):
     apellido = forms.CharField(max_length=30)
     email = forms.EmailField(max_length=40)
     fechaDeSalida = forms.DateField()    
+
+class formulario_c (forms.Form):
+    nombre = forms.CharField(max_length=20)
+    apellido = forms.CharField(max_length=30)
+    email = forms.EmailField(max_length=40)

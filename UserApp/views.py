@@ -17,11 +17,11 @@ def formulario (request):
                
                   paquetes = paquetes(nombre=informacion["nombre"], cantidad=informacion["cantidad"])
                   paquetes.save()
-                  return render(request, "TurismoApp/index.html")
+                  return render(request, "UserApp/index.html")
       else:
             miFormulario = formulario_f()
  
-      return render(request, "TurismoApp/formulario.html", {"miFormulario": miFormulario})
+      return render(request, "UserApp/formulario.html", {"miFormulario": miFormulario})
 
 
 def login_request (request):
@@ -40,18 +40,18 @@ def login_request (request):
                   if user is not None:
                         login(request, user)
                        
-                        return render(request,"TurismoApp/index.html",  {"mensaje":f"Bienvenido {usuario}"} )
+                        return render(request,"UserApp/index.html",  {"mensaje":f"Bienvenido {usuario}"} )
                   else:
                         
-                        return render(request,"TurismoApp/index.html", {"mensaje":"Error, datos incorrectos"} )
+                        return render(request,"UserApp/index.html", {"mensaje":"Error, datos incorrectos"} )
 
             else:
                         
-                        return render(request,"TurismoApp/index.html" ,  {"mensaje":"Error, formulario erroneo"})
+                        return render(request,"UserApp/index.html" ,  {"mensaje":"Error, formulario erroneo"})
 
       form = AuthenticationForm()
 
-      return render(request,"TurismoApp/login.html", {'form':form} )
+      return render(request,"UserApp/login.html", {'form':form} )
 
 
 def register (request):
@@ -62,13 +62,13 @@ def register (request):
             if form.is_valid():
                 username = form.cleaned_data['username']
                 form.save()
-                return render(request,"TurismoApp/index.html" ,  {"mensaje":f"{username} Usuario Creado :)"})
+                return render(request,"UserApp/index.html" ,  {"mensaje":f"{username} Usuario Creado :)"})
 
 
       else:
             form = UserRegisterForm()          
 
-      return render(request,"TurismoApp/register.html" ,  {"form":form})
+      return render(request,"UserApp/register.html" ,  {"form":form})
 
 @login_required
 def editarPerfil(request):
