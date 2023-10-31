@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
@@ -66,70 +65,75 @@
         </div>
     </div>
     <!-- Topbar End -->
-
-
+    
     <!-- Navbar Start -->
+    {% comment %} Aquí comienza la parte corregida {% endcomment %}
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="" class="navbar-brand">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{% url 'Inicio' %}">
                     <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
                 </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="{% url 'Inicio' %}" class="nav-item nav-link active">Inicio</a>
-                        <a href="{% url 'About' %}"class="nav-item nav-link">About</a>
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Paquetes</a>
-                        <div class="dropdown-menu border-0 rounded-0 m-0">
-                            <a href="{% url 'Tailandia' %}" class="dropdown-item">Tailandia</a>
-                            <a href="{% url 'Natal' %}" class="dropdown-item">Natal</a>
-                        </div>
-                    
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Inicio' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'About' %}">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="paquetesDropdown" data-toggle="dropdown">
+                                Paquetes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="paquetesDropdown">
+                                <a class="dropdown-item" href="{% url 'Tailandia' %}">Tailandia</a>
+                                <a class="dropdown-item" href="{% url 'Natal' %}">Natal</a>
+                            </div>
+                        </li>
                         {% if request.user.is_authenticated %}
-                            {% if user_avatar %}
-                                <img src="{{user_avatar}}" alt="" style="height: 40px;width: 40px;">
-                            {% endif %}
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" data-toggle="dropdown">
                                     {{ request.user.username }}
-                                </button>
-                                <div class="dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="{% url 'Editar' %}">Editar cuenta</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar sesión</a></li>
-                                </ul>
-                            </div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                                    <a class="dropdown-item" href="{% url 'Editar' %}">Editar cuenta</a>
+                                    <a class="dropdown-item" href="{% url 'Logout' %}">Cerrar sesión</a>
+                                </div>
+                            </li>
                         {% else %}
-                            <div class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cuenta</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                 <li><a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Register' %}">Crear cuenta</a></li>
-                                
-                                </ul>
-                            </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" data-toggle="dropdown">
+                                    Cuenta
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                                    <a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a>
+                                    <a class="dropdown-item" href="{% url 'Register' %}">Crear cuenta</a>
+                                </div>
+                            </li>
                         {% endif %}
-                   
-                        <div class="nav-item dropdown">
-                            <a href="{% url 'Blog' %}" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                             <a href="{% url 'Blog' %}" class="dropdown-item">Blog Grid</a>
-                             <a href="{% url 'BlogDetail' %}" class="dropdown-item">Blog Detail</a>
-                             {#  <a href="destination.html" class="dropdown-item">Destination</a >#}
-                             {# <a href="guide.html" class="dropdown-item">Travel Guides</a>#}
-                             {#  <a href="testimonial.html" class="dropdown-item">Testimonial</a> #}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown">
+                                Pages
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <a class="dropdown-item" href="{% url 'Blog' %}">Blog Grid</a>
+                                <a class="dropdown-item" href="{% url 'BlogDetail' %}">Blog Detail</a>
                             </div>
-                        </div>
-                        <a href="{% url 'Contacto' %}"class="nav-item nav-link">Contacto</a>
-                    </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Contacto' %}">Contacto</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
+            
         </div>
     </div>
+    {% comment %} Aquí termina la parte corregida {% endcomment %}
     <!-- Navbar End -->
 {% block content %}
 {% endblock %}
