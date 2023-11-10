@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 class formulario_f (forms.Form):
     paquetes = forms.CharField()
@@ -30,4 +31,17 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = ['email', 'password1', 'password2', 'last_name', 'first_name']
 
+
+from django.core.exceptions import ValidationError
+
+class ImagenForm(forms.Form):
+    imagen = forms.ImageField()
+
+    def clean_imagen(self):
+        imagen = self.cleaned_data.get('imagen')
+
+        if not imagen:
+            raise ValidationError("Este campo es obligatorio.")
+        
+        return imagen
 

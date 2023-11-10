@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from UserApp.forms import formulario_f, UserRegisterForm,UserEditForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.decorators import login_required
+from .forms import ImagenForm
 
 
 def formulario (request):
@@ -110,3 +111,18 @@ def editarPerfil(request):
 
       #Voy al html que me permite editar
       return render(request, "UserApp/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+
+def upload_imagen(request):
+    if request.method == 'POST':
+        form = ImagenForm(request.POST, request.FILES)#aquí mellega toda la información del html
+        if form.is_valid(): #Si pasó la validación de Django
+            imagen = Imagen (imagen=request.FILES['imagen'])
+            imagen.save()
+            return redirect('home')
+    else:
+        form = ImagenForm()
+    return render(request, 'upload.html', {'form': form})#Vuelvo al inicio o a donde quieran
+
+
+

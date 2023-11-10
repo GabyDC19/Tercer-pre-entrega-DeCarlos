@@ -24,6 +24,30 @@
 <meta content="Free HTML Templates" name="keywords">
 <meta content="Free HTML Templates" name="description">
 
+{% for paquete_t in paquetes_tailandia %}
+  <li>{{ paquete_t.nombre }}</li>
+  <h2>Comentarios</h2>
+  <ul>
+    {% for comment in paquete_comments %}
+        {% if paquete_t.id == comment.comentario_id %}
+        <li>
+            <p>Mensaje: {{ comment.mensaje }}</p>
+            <p>Por: {{ comment.user }}</p>
+            <p>Fecha: {{ comment.fechaComentario }}</p>
+        </li>
+        {% endif %}
+        {% empty %}
+            <li>No hay comentarios aún.</li>
+    {% endfor %}
+  </ul>
+  <form method="post" action="{% url 'crear_comentario' pk=paquete_t.id %}">
+    {% csrf_token %}
+    {{ form.mensaje.label_tag }}
+    {{ form.mensaje }}
+    <input type="submit" value="Comentar">
+  </form>
+
+{% endfor %}
 
  <!-- Packages Start -->
  <div class="container-fluid py-5">

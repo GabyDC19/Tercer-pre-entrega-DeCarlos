@@ -11,3 +11,6 @@ class Imagen (models.Model):
 
     def __str__(self):
         return f"{settings.MEDIA_URL}{self.imagen}"
+
+
+
