@@ -1,4 +1,17 @@
 {% extends "TurismoApp/base.html" %}
 {% load static %}
 
+{% block content %}
 {% block title %} pagina en construccion  {% endblock title %}
+
+{% block title %} Regist Logout  {% endblock title %}
+<div>
+{% block content %}
+<div class="d-flex justify-content-center">
+      
+            <p class= "fs-s fw-bold"> {{msg_login}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% endblock content %}    

@@ -3,7 +3,7 @@ from TurismoApp.forms import formulario_f, formulario_t,formulario_N, Comentario
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
-from .models import Tailandia, Comentario, natal, paquetes
+from .models import Tailandia, Comentario, natal, paquetes, Contacto
 
 
 
@@ -13,9 +13,6 @@ def inicio(request):
 
 def about(request):
     return render (request, "TurismoApp/about.html")
-
-def contacto(request):
-    return render (request, "TurismoApp/contacto.html")
 
 def blog (request):
     return render (request, "TurismoApp/blog.html")
@@ -105,6 +102,20 @@ def formulario (request):
       return render(request, "TurismoApp/formulario.html", {"miFormulario": miFormulario})
 
 
+def contacto (request):
+      if request.method == 'POST':
 
+            contac = ComentarioForm (request.POST) 
+    
+            if contac.is_valid():
+               informacion = contac.cleaned_data
+               thecontac = Contacto (
+                 nombre=informacion['nombre'], email=informacion['fechaDeSalida'],subjet=informacion['subjet'],message=informacion['message'], user=request.user)
+               thecontac.save()
+            return redirect('Paquetes')
+      else:
+        contac = ComentarioForm()
+
+      return render(request, "TurismoApp/contacto.html", {"contac": contac})  
 
 

@@ -42,3 +42,8 @@ class natal(models.Model):
     email = models.EmailField(max_length=40)
     fechaDeSalida = models.DateField()
 
+class Contacto (models.Model):
+    nombre = models.CharField(max_length=40)
+    email = models.EmailField(max_length=40)
+    subjet = models.CharField(max_length=40) 
+    message = models.CharField(max_length=100)
