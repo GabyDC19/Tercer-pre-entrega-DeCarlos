@@ -4,7 +4,7 @@ from .views import inicio,paquetes,formulario, agendarTailandia,agendarNatal, ab
 
 
 urlpatterns = [
-    path('inicio/', inicio, name="Inicio"),
+    path('', inicio, name="Inicio"),
     path ('paq/', paquetes, name="Paquetes"),
     path('form/', formulario, name="Formulario"),
     path('tai/', agendarTailandia, name="Tailandia"),

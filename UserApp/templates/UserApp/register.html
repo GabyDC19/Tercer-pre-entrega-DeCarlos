@@ -3,7 +3,10 @@
 {% load static %}
 
 {% block title %} Register  {% endblock title %}
-{% block main%}
+
+{% block content %}
+
+
 <div class="d-flex justify-content-center">
         <div class= "d-flex Flex-column">
             <p class= "fs-s fw-bold"> {{msg_login}}
@@ -12,5 +15,7 @@
         {{ form.as_p }}
         <button type="submit">Aceptar</button>
     </form>
-    {%endblock main %}
+{% endblock content %}
 
+</body>
+</html>

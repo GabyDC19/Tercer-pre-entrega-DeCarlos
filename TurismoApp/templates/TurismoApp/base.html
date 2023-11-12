@@ -86,9 +86,9 @@
                             <a class="nav-link" href="{% url 'About' %}">About</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="paquetesDropdown" data-toggle="dropdown">
-                                Paquetes
-                            </a>
+                            <a class="nav-link dropdown-toggle" href="{% url 'Paquetes' %}" id="paquetesDropdown" data-toggle="dropdown">Paquetes</a>
+                                
+                            
                             <div class="dropdown-menu" aria-labelledby="paquetesDropdown">
                                 <a class="dropdown-item" href="{% url 'Tailandia' %}">Tailandia</a>
                                 <a class="dropdown-item" href="{% url 'Natal' %}">Natal</a>
@@ -135,8 +135,10 @@
     </div>
     {% comment %} Aquí termina la parte corregida {% endcomment %}
     <!-- Navbar End -->
+<div>
 {% block content %}
 {% endblock %}
+</div>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
@@ -154,22 +156,11 @@
                     <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
-            </div>
+           
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="{% url 'About' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
@@ -189,6 +180,8 @@
                         <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
                         <div class="input-group-append">
                             <button class="btn btn-primary px-3">Sign Up</button>
+                            <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                                <a class="dropdown-item" href="{% url 'Contacto' %}">sing up</a>
                         </div>
                     </div>
                 </div>

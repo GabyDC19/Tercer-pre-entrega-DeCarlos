@@ -1,7 +1,50 @@
 {% extends "TurismoApp/base.html" %}
 {% load static %}
 
+{% block title %} Contacto  {% endblock title %}
+<div>
 
+<div class="d-flex justify-content-center">
+      
+            <p class= "fs-s fw-bold"> {{msg_login}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit">Aceptar</button>
+    </form>
+
+
+
+
+
+<div>
+    <h1>Natal:</h1>
+    <ul>
+        {% for paquete_n in paquetes_natal %}
+          <li>{{ paquete_n.nombre }}</li>       
+        {% endfor %}
+    </ul>
+    {% for paquete_t in paquetes_tailandia %}
+    <li>{{ paquete_t.nombre }}</li>
+    <h2>Comentarios</h2>
+    <ul>
+      {% for comment in paquete_comments %}
+        <li>
+          <p>{{ comment.mensaje }}</p>
+          <p>Por: {{ comment.nombre }}</p>
+          <p>Fecha: {{ comment.fechaComentario }}</p>
+        </li>
+      {% empty %}
+        <li>No hay comentarios aún.</li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'crear_comentario' pk=paquete_t.id %}">
+      {% csrf_token %}
+      {{ form.mensaje.label_tag }}
+      {{ form.mensaje }}
+      <input type="submit" value="Comentar">
+    </form>
+   {% endfor %}    
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">

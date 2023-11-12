@@ -3,7 +3,7 @@ from TurismoApp.forms import formulario_f, formulario_t,formulario_N, Comentario
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
-from .models import Tailandia, Comentario
+from .models import Tailandia, Comentario, natal, paquetes
 
 
 
@@ -27,7 +27,7 @@ def blogD (request):
 def paquetes(request):
     paquetes_tailandia = Tailandia.objects.all()
     paquete_comments = Comentario.objects.all()
-    return render(request, "TurismoApp/paquetes.html",{"paquetes_tailandia": paquetes_tailandia, "paquete_comments": paquete_comments, "form": ComentarioForm()})
+    return render (request, "TurismoApp/paquetes.html",{"paquetes_tailandia": paquetes_tailandia, "paquete_comments": paquete_comments, "form": ComentarioForm()})
     
 
 
@@ -38,10 +38,9 @@ def agendarTailandia(request):
     
             if miTai.is_valid():
                informacion = miTai.cleaned_data
-
-            tailandia =  Tailandia(
+               tailandia =  Tailandia(
                  nombre=informacion['nombre'], apellido=informacion['apellido'], fechaDeSalida=informacion['fechaDeSalida'], email=informacion['fechaDeSalida'], user=request.user)
-            tailandia.save()
+               tailandia.save()
             return redirect('Paquetes')
       else:
         miTai = formulario_N()
@@ -73,14 +72,15 @@ def agendarNatal (request):
  
             if miNat.is_valid():
                   informacion = miNat.cleaned_data
-               
-                  natal = natal(nombre=informacion["nombre"], apellido=informacion["apellido"],email=informacion["email"], fechaDeSalida=informacion["fechaDeSalida"])
-                  natal.save()
-                  return render(request, "TurismoApp/natal.html")
+                  
+                  evento_natal = natal(nombre=informacion["nombre"], apellido=informacion["apellido"],email=informacion["email"], fechaDeSalida=informacion["fechaDeSalida"])
+                  evento_natal.save()
+                  return redirect ('Natal')
+                  
       else:
             miNat = formulario_N()
  
-      return render(request, "TurismoApp/natal.html", {"miNat": miNat})
+      return render(request, "TurismoApp/natal.html", {"miNat": miNat, "paquetes_natal":natal.objects.all()})
 
 
      
@@ -95,9 +95,9 @@ def formulario (request):
             if miFormulario.is_valid():
                   informacion = miFormulario.cleaned_data
                
-                  paquetes = paquetes(
+                  paquete = paquetes(
                        nombre=informacion["nombre"], cantidad=informacion["cantidad"])
-                  paquetes.save()
+                  paquete.save()
                   return render(request, "TurismoApp/index.html")
       else:
             miFormulario = formulario_f()

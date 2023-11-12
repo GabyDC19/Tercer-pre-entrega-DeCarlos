@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import ImagenForm
-
+from .models import Imagen
 
 def formulario (request):
  
@@ -125,4 +125,6 @@ def upload_imagen(request):
     return render(request, 'upload.html', {'form': form})#Vuelvo al inicio o a donde quieran
 
 
+def pag_construccion (request):
+      return render (request, "TurismoApp/construccion.html")
 

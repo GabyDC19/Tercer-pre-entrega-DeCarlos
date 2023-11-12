@@ -3,13 +3,13 @@
 {% load static %}
 
 {% block title %} Login  {% endblock title %}
-{% block main %}
+{% block content %}
 <div class="d-flex justify-content-center">
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Inciar sesion</button>
     </form>
-{% endblock main %}   
+{% endblock content %}   
 </body>
 </html>
